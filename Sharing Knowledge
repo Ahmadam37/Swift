@@ -1,0 +1,30 @@
+func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // searchTextField it is the name of the text field
+        searchTextField.endEditing(true)
+        return true
+        // here in this function its allow you disable or hide the keyboard after user changes 
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
+        if textField.text != ""{
+            
+            return true
+            
+        }else{
+            
+            textField.placeholder = "Type somthing"
+            return false
+        }
+        /*
+    here in this function it is allow you to make sure the text field not empty, if the user pressed return button or the
+    search button and the text field is empty then this meassage "Type somthing" will appears
+    */
+    
+    }
+    
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        searchTextField.text = ""
+    } // this function will make sure after the user completed his search, then the text field will return empty.
