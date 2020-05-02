@@ -1,3 +1,10 @@
+We have in UITextField a lot of functionality that may help you, and all these are built-in.
+
+
+
+
+
+
 func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // searchTextField it is the name of the text field
         searchTextField.endEditing(true)
