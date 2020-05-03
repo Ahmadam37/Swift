@@ -1,0 +1,113 @@
+Difinetion of swift Protocol:
+
+A protocol defines a blueprint of methods, properties,
+and other requirements that suit a particular task or piece of functionality.[1]
+
+The protocol can then be adopted by a class, structure, or enumeration to provide
+an actual implementation of those requirements.[1]
+
+Any type that satisfies the requirements of a protocol is said to conform to that protocol.[1]
+
+Protocol is like a crtification in ypur resume, protocol are fundamental aspects of swift.[1]
+
+
+
+
+to define protocol you have to follow this:
+
+protocol NameOfProtocol{
+   // here you have defien requirement of your protocol.
+}
+
+
+STRUCT:
+
+for EX if you want to define struct with protocol you have to do this:
+
+struct nameOfStructure: FirstProtocolName, SecondProtocolName{
+   // struct difenition gose here
+}
+
+
+CLASS:
+
+If want to create a class and the class has a superclass,
+you have to list the superclass name before any protocols it adopts,
+followed by a comma:
+
+class NameOfClass: Superclass, FirstProtocolName, SecondProtocolName {
+    // class definition goes here
+}
+
+
+
+This is EX by coding you can run it and see how its gose, and to know the power of PROTOCOL.
+
+/////////////////////////////////////////////////
+protocol AdvancedLifeSupport {
+    func preformCPR()
+}
+class EmergencyCallHandler {
+    
+    var delegate: AdvancedLifeSupport?
+    
+    func assessSituation (){
+        print("Can you tell me what happened?")
+    }
+    func medicalEmergency(){
+        delegate?.preformCPR()
+    }
+}
+struct Paramedic: AdvancedLifeSupport {
+    init(handler: EmergencyCallHandler) {
+        handler.delegate = self
+    }
+    func preformCPR() {
+        print("The Paramedic dose chest compressions, 30 per second.")
+    }
+}
+class Doctor: AdvancedLifeSupport{
+    init(handler: EmergencyCallHandler) {
+        handler.delegate = self
+    }
+    func preformCPR() {
+        print("The Doctor dose chest compression, 30 per second.")
+    }
+    func useShtethescope(){
+        print("listening for heart sound")
+    }
+}
+class Surgeon: Doctor {
+    override func preformCPR() {
+        super.preformCPR()
+        print("Sings Staying alive by the BeeGees")
+    }
+    func useElictricDrill(){
+        print("Whirr...")
+    }
+}
+let ahmad = EmergencyCallHandler()
+let saad = Surgeon(handler: ahmad)
+
+ahmad.assessSituation()
+ahmad.medicalEmergency()
+
+/////////////////////////////////////////////
+
+[OutPut]
+Can you tell me what happened?
+The Doctor dose chest compression, 30 per second.
+Sings Staying alive by the BeeGees
+
+
+
+
+
+
+
+
+
+
+References:
+
+1- https://docs.swift.org/swift-book/LanguageGuide/Protocols.html
